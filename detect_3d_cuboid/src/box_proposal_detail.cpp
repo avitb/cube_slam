@@ -7,6 +7,7 @@
 #include <string>
 #include <sstream>
 #include <ctime>
+#include <numeric>
 
 // opencv pcl
 #include <opencv/cv.h>
@@ -528,7 +529,7 @@ void detect_3d_cuboid::detect_cuboid(const cv::Mat &rgb_img, const Matrix4d &tra
 		}
 
 		std::vector<int> sort_idx_small(all_combined_score.rows());
-		iota(sort_idx_small.begin(), sort_idx_small.end(), 0);
+		std::iota(sort_idx_small.begin(), sort_idx_small.end(), 0);
 		sort_indexes(all_combined_score, sort_idx_small, actual_cuboid_num_small);
 		for (int ii = 0; ii < actual_cuboid_num_small; ii++) // use sorted index
 		{
